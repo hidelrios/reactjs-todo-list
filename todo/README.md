@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# ReactJS Todo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação de lista de tarefas desenvolvida com React 19, TypeScript, Vite e Tailwind CSS.
 
-Currently, two official plugins are available:
+## Visão geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este projeto implementa uma interface simples de criação e visualização de tarefas, com persistência no `localStorage` e uma página extra para demonstração de componentes.
 
-## React Compiler
+### Funcionalidades
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Criação de nova tarefa
+- Persistência de tarefas no `localStorage`
+- Contagem de tarefas criadas e concluídas
+- Página de componentes para visualização de botões, badges, ícones, inputs e skeletons
+- Navegação com `react-router`
 
-Note: This will impact Vite dev & build performances.
+## Estrutura principal
 
-## Expanding the ESLint configuration
+- `src/App.tsx` — configura as rotas do app
+- `src/pages/page-home.tsx` — página inicial com painel de tarefas
+- `src/pages/page-components.tsx` — página de exemplos de componentes
+- `src/hooks/use-task.ts` — hook para preparar nova tarefa
+- `src/hooks/use-tasks.ts` — hook para carregar tarefas do armazenamento local
+- `src/models/task.ts` — definição do tipo `Task` e constantes de armazenamento
+- `src/core-components/` — componentes de layout e lógica de tarefa
+- `src/components/` — componentes reutilizáveis de botão, input, badge, ícone, etc.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 19
+- TypeScript 6
+- Vite
+- Tailwind CSS 4
+- `use-local-storage` / `use-local-storage-state`
+- `react-router` v7
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Scripts disponíveis
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+No diretório do projeto (`todo`), execute:
+
+```bash
+pnpm install
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Outros scripts:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm build
+pnpm lint
+pnpm preview
 ```
+
+## Como executar
+
+1. Instale dependências:
+
+```bash
+pnpm install
+```
+
+2. Inicie o servidor de desenvolvimento:
+
+```bash
+pnpm dev
+```
+
+3. Abra o endereço exibido no terminal (normalmente `http://localhost:5173`).
+
+## Observações
+
+- A rota principal (`/`) exibe o painel de tarefas.
+- A rota `/componentes` exibe exemplos visuais dos componentes usados no projeto.
+- O projeto usa `BrowserRouter` para roteamento cliente.
